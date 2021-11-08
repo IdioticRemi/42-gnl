@@ -1,0 +1,7 @@
+tester
+.idea
+*.o
+.DS_Store
+cmake-build-debug
+gnl
+42_with_nl

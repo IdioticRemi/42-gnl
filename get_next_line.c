@@ -6,7 +6,7 @@
 /*   By: tjolivea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 18:33:06 by tjolivea          #+#    #+#             */
-/*   Updated: 2021/11/08 19:06:29 by tjolivea         ###   ########lyon.fr   */
+/*   Updated: 2021/11/09 11:19:38 by tjolivea         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ static char	*ft_read_leftover(int fd, char *leftovers)
 	if (!buf)
 		return (0);
 	r = 1;
-	while (!ft_strchr(leftovers, '\n') && r)
+	buf[0] = '\0';
+	while (!ft_strchr(buf, '\n') && r)
 	{
 		r = read(fd, buf, BUFFER_SIZE);
 		if (r == -1)

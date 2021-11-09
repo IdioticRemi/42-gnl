@@ -72,7 +72,7 @@ static char	*ft_read_leftover(int fd, char *leftovers)
 	if (!buf)
 		return (0);
 	r = 1;
-	while (!ft_strchr(leftovers, '\n') && r)
+	while (!ft_strchr(buf, '\n') && r)
 	{
 		r = read(fd, buf, BUFFER_SIZE);
 		if (r == -1)

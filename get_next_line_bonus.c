@@ -65,25 +65,19 @@ static char	*ft_new_leftover(char *leftover)
 
 static char	*ft_read_leftover(int fd, char *leftovers)
 {
-	char	*buf;
+	char	buf[BUFFER_SIZE + 1];
 	int		r;
 
-	buf = malloc((BUFFER_SIZE + 1));
-	if (!buf)
-		return (0);
 	r = 1;
+	buf[0] = '\0';
 	while (!ft_strchr(buf, '\n') && r)
 	{
 		r = read(fd, buf, BUFFER_SIZE);
 		if (r == -1)
-		{
-			free(buf);
 			return (0);
-		}
 		buf[r] = '\0';
 		leftovers = ft_strjoin(leftovers, buf);
 	}
-	free(buf);
 	return (leftovers);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tjolivea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 18:33:06 by tjolivea          #+#    #+#             */
-/*   Updated: 2021/11/09 11:19:38 by tjolivea         ###   ########lyon.fr   */
+/*   Updated: 2021/11/11 12:44:28 by tjolivea         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,26 +65,19 @@ static char	*ft_new_leftover(char *leftover)
 
 static char	*ft_read_leftover(int fd, char *leftovers)
 {
-	char	*buf;
+	char	buf[BUFFER_SIZE + 1];
 	int		r;
 
-	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buf)
-		return (0);
 	r = 1;
 	buf[0] = '\0';
 	while (!ft_strchr(buf, '\n') && r)
 	{
 		r = read(fd, buf, BUFFER_SIZE);
 		if (r == -1)
-		{
-			free(buf);
 			return (0);
-		}
 		buf[r] = '\0';
 		leftovers = ft_strjoin(leftovers, buf);
 	}
-	free(buf);
 	return (leftovers);
 }
 
